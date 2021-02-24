@@ -1,0 +1,10 @@
+
+ul.list li.item {
+  color: $primary;
+  list-style: none;
+  display: inline-block;
+  width: calc(50% - 1em);
+  &.important {
+    color: $danger;
+  }
+}

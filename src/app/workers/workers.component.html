@@ -2,17 +2,25 @@
 
 <h3>Liste des collaborateurs</h3>
 
-<div *ngFor="let worker of workers">
-  <div>
-    <span>id : </span>{{ worker.guid }}
-  </div>
-  <div>
-    <span>Prénom : </span>{{ worker.firstName }}
-  </div>
-  <div>
-    <span>Nom : </span>{{ worker.lastName }}
-  </div>
-  <div>
-    <span>Email : </span>{{ worker.email }}
-  </div>
-</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let worker of workers">
+      <td>
+        {{ worker.firstName }}
+      </td>
+      <td>
+        {{ worker.lastName }}
+      </td>
+      <td>
+        {{ worker.email }}
+      </td>
+    </tr>
+  </tbody>
+</table>

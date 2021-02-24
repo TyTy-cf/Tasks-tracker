@@ -1,8 +1,29 @@
 
-<h3>{{ task.name }}</h3>
-<div>
-  <span>id : </span>{{ task.guid }}
-</div>
-<div>
-  <span>Durée : </span>{{task.time}}
-</div>
+<h3>Liste des tâches</h3>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Durée</th>
+    <th>Assignée à</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let task of tasks">
+    <td>
+      {{ task.name }}
+    </td>
+    <td>
+      {{ task.time }}
+    </td>
+    <td>
+      {{ task.worker.firstName }} {{ task.worker.lastName }}
+    </td>
+    <td>
+
+    </td>
+  </tr>
+  </tbody>
+</table>

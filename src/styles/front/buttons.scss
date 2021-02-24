@@ -1,0 +1,10 @@
+
+.btn {
+  background-color: blue;
+
+  &-danger {
+    background-color: $danger;
+    color: white;
+  }
+
+}

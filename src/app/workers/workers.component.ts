@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Worker } from '../models/worker';
+import { Worker } from '../../models/worker';
 import { Guid } from 'guid-typescript';
 
 @Component({
@@ -26,6 +26,18 @@ export class WorkersComponent implements OnInit {
         firstName: 'Nicolas',
         lastName: 'AMBLARD',
         email: 'nicolas@drosalys.fr',
+      },
+      {
+        guid: Guid.create(),
+        firstName: 'Théau',
+        lastName: 'GONCALVES',
+        email: 'theau@drosalys.fr',
+      },
+      {
+        guid: Guid.create(),
+        firstName: 'Benjamin',
+        lastName: 'GEORGEAULT',
+        email: 'benjamin@drosalys.fr',
       }
     ];
   }
