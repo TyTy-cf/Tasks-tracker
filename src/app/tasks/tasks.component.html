@@ -16,13 +16,15 @@
         {{ task.name }}
       </td>
       <td>
-        {{ task.time }}
+        {{ task.time }} j/h
       </td>
       <td>
         {{ task.worker.firstName }} {{ task.worker.lastName }}
       </td>
       <td>
-
+        <a routerLink="">
+          <fa-icon [icon]="trashIcon"></fa-icon>
+        </a>
       </td>
     </tr>
   </tbody>

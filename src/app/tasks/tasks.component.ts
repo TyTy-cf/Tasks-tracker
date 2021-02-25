@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task';
 import { Guid } from 'guid-typescript';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss']
 })
 
 export class TasksComponent implements OnInit {
 
   /**
-   * @private task
+   * @private tasks
    */
   public tasks: Task[];
+
+  public trashIcon = faTrash;
 
   constructor() {
   }
@@ -23,45 +25,49 @@ export class TasksComponent implements OnInit {
       {
         guid: Guid.create(),
         name: 'Task de test',
-        time: 56112,
+        time: 1.5,
         worker: {
           guid: Guid.create(),
           firstName: 'Kévin',
           lastName: 'TOURRET',
           email: 'kevin@drosalys.fr',
+          password: 'pwd',
         },
       },
       {
         guid: Guid.create(),
         name: 'Task de test 2',
-        time: 98756,
+        time: 2,
         worker: {
           guid: Guid.create(),
           firstName: 'Nicolas',
           lastName: 'AMBLARD',
           email: 'nicolas@drosalys.fr',
+          password: 'pwd',
         },
       },
       {
         guid: Guid.create(),
         name: 'Task de test 3',
-        time: 67369,
+        time: 0.5,
         worker: {
           guid: Guid.create(),
           firstName: 'Théau',
           lastName: 'GONCALVES',
           email: 'theau@drosalys.fr',
+          password: 'pwd',
         },
       },
       {
         guid: Guid.create(),
         name: 'Task de test 4',
-        time: 45896,
+        time: 5,
         worker: {
           guid: Guid.create(),
           firstName: 'Benjamin',
           lastName: 'GEORGEAULT',
           email: 'benjamin@drosalys.fr',
+          password: 'pwd',
         },
       }
     ];

@@ -5,10 +5,14 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { WorkersComponent } from './workers/workers.component';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TaskDeleteComponent } from './task-delete/task-delete.component';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
   { path: 'workers', component: WorkersComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'tasks', pathMatch: 'full' },
 ];
 
@@ -17,10 +21,13 @@ const routes: Routes = [
     AppComponent,
     TasksComponent,
     WorkersComponent,
+    LoginComponent,
+    TaskDeleteComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    FontAwesomeModule,
   ],
   providers: [
   ],

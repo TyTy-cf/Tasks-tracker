@@ -5,7 +5,6 @@ import { Guid } from 'guid-typescript';
 @Component({
   selector: 'app-workers',
   templateUrl: './workers.component.html',
-  styleUrls: ['./workers.component.scss']
 })
 export class WorkersComponent implements OnInit {
 
@@ -20,24 +19,28 @@ export class WorkersComponent implements OnInit {
         firstName: 'Kévin',
         lastName: 'TOURRET',
         email: 'kevin@drosalys.fr',
+        password: 'pwd',
       },
       {
         guid: Guid.create(),
         firstName: 'Nicolas',
         lastName: 'AMBLARD',
         email: 'nicolas@drosalys.fr',
+        password: 'pwd',
       },
       {
         guid: Guid.create(),
         firstName: 'Théau',
         lastName: 'GONCALVES',
         email: 'theau@drosalys.fr',
+        password: 'pwd',
       },
       {
         guid: Guid.create(),
         firstName: 'Benjamin',
         lastName: 'GEORGEAULT',
         email: 'benjamin@drosalys.fr',
+        password: 'pwd',
       }
     ];
   }
