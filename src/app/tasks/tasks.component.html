@@ -2,28 +2,28 @@
 <h3>Liste des tâches</h3>
 
 <table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Nom</th>
-    <th>Durée</th>
-    <th>Assignée à</th>
-    <th>Actions</th>
-  </tr>
+  <thead class="font-blue">
+    <tr>
+      <th>Nom</th>
+      <th>Durée</th>
+      <th>Assignée à</th>
+      <th>Actions</th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let task of tasks">
-    <td>
-      {{ task.name }}
-    </td>
-    <td>
-      {{ task.time }}
-    </td>
-    <td>
-      {{ task.worker.firstName }} {{ task.worker.lastName }}
-    </td>
-    <td>
+    <tr *ngFor="let task of tasks">
+      <td>
+        {{ task.name }}
+      </td>
+      <td>
+        {{ task.time }}
+      </td>
+      <td>
+        {{ task.worker.firstName }} {{ task.worker.lastName }}
+      </td>
+      <td>
 
-    </td>
-  </tr>
+      </td>
+    </tr>
   </tbody>
 </table>

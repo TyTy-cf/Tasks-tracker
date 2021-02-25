@@ -45,7 +45,7 @@ export class TasksComponent implements OnInit {
       {
         guid: Guid.create(),
         name: 'Task de test 3',
-        time: 45369,
+        time: 67369,
         worker: {
           guid: Guid.create(),
           firstName: 'Théau',
