@@ -22,7 +22,10 @@
         {{ task.worker.firstName }} {{ task.worker.lastName }}
       </td>
       <td>
-        <a routerLink="">
+        <a routerLink="/task/view/{{ task.guid }}">
+          <fa-icon [icon]="faEye"></fa-icon>
+        </a>
+        <a routerLink="/task/delete/{{ task.guid }}">
           <fa-icon [icon]="trashIcon"></fa-icon>
         </a>
       </td>

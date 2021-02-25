@@ -8,12 +8,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
+import { TaskViewComponent } from './task-view/task-view.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
   { path: 'workers', component: WorkersComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'tasks', pathMatch: 'full' },
+  { path: 'task/delete/:id', component: TaskDeleteComponent },
+  { path: 'task/view/:id', component: TaskViewComponent },
 ];
 
 @NgModule({
@@ -23,11 +27,13 @@ const routes: Routes = [
     WorkersComponent,
     LoginComponent,
     TaskDeleteComponent,
+    TaskViewComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
+    FormsModule,
   ],
   providers: [
   ],

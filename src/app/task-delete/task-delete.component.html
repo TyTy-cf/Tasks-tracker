@@ -1,1 +1,10 @@
-<p>task-delete works!</p>
+<h3>Suppression de la tâche : {{ task.name }}</h3>
+<div class="btn-group">
+
+  <button
+    routerLink="/task/delete/{{ task.guid }}"
+    class="btn btn-warning"
+  >
+    Supprimer
+  </button>
+</div>

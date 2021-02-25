@@ -1,0 +1,8 @@
+
+<div *ngIf="taskGuid">
+  <h2>{{ taskGuid }}</h2>
+  <div>
+    <label for="task-name">Tâche Guid : </label>
+    <input id="task-name" [(ngModel)]="taskGuid" placeholder="name">
+  </div>
+</div>

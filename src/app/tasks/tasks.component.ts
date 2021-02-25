@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task';
 import { Guid } from 'guid-typescript';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tasks',
@@ -15,7 +15,11 @@ export class TasksComponent implements OnInit {
    */
   public tasks: Task[];
 
+  /**
+   * Icons
+   */
   public trashIcon = faTrash;
+  public faEye = faEye;
 
   constructor() {
   }
