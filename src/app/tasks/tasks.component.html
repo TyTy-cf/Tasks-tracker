@@ -1,34 +1,56 @@
 
-<h3>Liste des tâches</h3>
+<h3>Mes tâches</h3>
 
-<table class="table table-striped">
-  <thead class="font-blue">
+<table class="table table-striped title-blue">
+  <thead>
     <tr>
+      <th>N°</th>
+      <th>Client</th>
+      <th>Projet</th>
       <th>Nom</th>
-      <th>Durée</th>
-      <th>Assignée à</th>
-      <th>Actions</th>
+      <th>Date</th>
+      <th>Temps passé</th>
+      <th>Web Mastering</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let task of tasks">
       <td>
-        {{ task.name }}
+        {{ task.task.taskNumber }}
+      </td>
+      <td *ngIf="task.task.project.client; else emptyTd">
+        {{ task.task.project.client.lastName | uppercase }} {{ task.task.project.client.firstName }}
       </td>
       <td>
-        {{ task.time }} j/h
+        {{ task.task.project.name }}
       </td>
       <td>
-        {{ task.worker.firstName }} {{ task.worker.lastName }}
+        {{ task.task.name }}
       </td>
       <td>
-        <a routerLink="/task/view/{{ task.guid }}">
+        {{ task.task.createAt | date: "dd/MM/yyyy HH:mm:ss" }}
+      </td>
+      <td>
+        {{ task.task.duration }}h
+      </td>
+      <td *ngIf="task.task.webMastering; else emptyTd">
+        <fa-icon class="green" [icon]="faCheck"></fa-icon>
+      </td>
+      <td>
+        <a routerLink="/task/view/{{ task.id }}">
           <fa-icon [icon]="faEye"></fa-icon>
         </a>
-        <a routerLink="/task/delete/{{ task.guid }}">
+        <a routerLink="/task/delete/{{ task.id }}">
           <fa-icon [icon]="trashIcon"></fa-icon>
         </a>
       </td>
     </tr>
   </tbody>
 </table>
+
+<ng-template #emptyTd>
+  <td>
+
+  </td>
+</ng-template>

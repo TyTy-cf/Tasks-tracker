@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../../models/task';
-import { Guid } from 'guid-typescript';
-import { faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEye, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { TaskService } from '../../services/task.service';
+import { TaskInfo } from '../../services/abstract.tasks-service';
 
 @Component({
   selector: 'app-tasks',
@@ -11,70 +11,22 @@ import { faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 export class TasksComponent implements OnInit {
 
   /**
-   * @private tasks
+   * @private TaskInfo
    */
-  public tasks: Task[];
+  public tasks: TaskInfo[];
 
   /**
    * Icons
    */
   public trashIcon = faTrash;
   public faEye = faEye;
+  public faCheck = faCheck;
 
-  constructor() {
+  constructor(private taskService: TaskService) {
   }
 
-  ngOnInit(): void {
-    this.tasks = [
-      {
-        guid: Guid.create(),
-        name: 'Task de test',
-        time: 1.5,
-        worker: {
-          guid: Guid.create(),
-          firstName: 'Kévin',
-          lastName: 'TOURRET',
-          email: 'kevin@drosalys.fr',
-          password: 'pwd',
-        },
-      },
-      {
-        guid: Guid.create(),
-        name: 'Task de test 2',
-        time: 2,
-        worker: {
-          guid: Guid.create(),
-          firstName: 'Nicolas',
-          lastName: 'AMBLARD',
-          email: 'nicolas@drosalys.fr',
-          password: 'pwd',
-        },
-      },
-      {
-        guid: Guid.create(),
-        name: 'Task de test 3',
-        time: 0.5,
-        worker: {
-          guid: Guid.create(),
-          firstName: 'Théau',
-          lastName: 'GONCALVES',
-          email: 'theau@drosalys.fr',
-          password: 'pwd',
-        },
-      },
-      {
-        guid: Guid.create(),
-        name: 'Task de test 4',
-        time: 5,
-        worker: {
-          guid: Guid.create(),
-          firstName: 'Benjamin',
-          lastName: 'GEORGEAULT',
-          email: 'benjamin@drosalys.fr',
-          password: 'pwd',
-        },
-      }
-    ];
+  async ngOnInit(): Promise<void> {
+    this.tasks = await this.taskService.getListTasksAsync(true);
   }
 
 }

@@ -1,10 +1,7 @@
 
 .btn {
-  background-color: blue;
-
-  &-danger {
+  &.btn-danger {
     background-color: $danger;
     color: white;
   }
-
 }

@@ -1,9 +1,10 @@
-<h3>Suppression de la tâche : {{ task.name }}</h3>
-<div class="btn-group">
 
+<h3>Suppression de la tâche : {{ task.name }}</h3>
+
+<div class="btn-group">
   <button
-    routerLink="/task/delete/{{ task.guid }}"
-    class="btn btn-warning"
+    routerLink="/task/delete/"
+    class="btn btn-danger"
   >
     Supprimer
   </button>
