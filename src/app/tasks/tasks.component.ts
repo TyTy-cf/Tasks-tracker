@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faEye, faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faCheck, faCopy, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { TaskService } from '../../services/task.service';
 import {TaskInfo } from '../../services/abstract.task-service';
 import {Guid} from 'guid-typescript';
@@ -16,12 +16,11 @@ export class TasksComponent implements OnInit {
    */
   public tasks: TaskInfo[];
 
-  /**
-   * Icons
-   */
+  /** Icons */
   public faCheck = faCheck;
   public faEye = faEye;
   public faCopy = faCopy;
+  public faTrash = faTrash;
 
   constructor(private taskService: TaskService) {
   }
@@ -30,7 +29,7 @@ export class TasksComponent implements OnInit {
     this.tasks = await this.taskService.getTasksListAsync();
   }
 
-  taskDuplicate(id: Guid): void {
+  duplicateTask(id: Guid): void {
     this.taskService.getTaskAsync(id).then((t) => {
       const newTask = new Task(
           t.task.name,
@@ -38,8 +37,13 @@ export class TasksComponent implements OnInit {
           t.task.project,
           t.task.isWebMastering
       );
+      newTask.duration = t.task.duration;
       this.taskService.createTaskAsync(Guid.create(), newTask);
     });
+  }
+
+  async deleteTask(id: Guid): Promise<void> {
+    await this.taskService.deleteTaskAsync(id);
   }
 
 }

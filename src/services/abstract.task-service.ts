@@ -8,7 +8,7 @@ export interface TaskInfo {
 
 export abstract class AbstractTaskService {
     abstract createTaskAsync(id: Guid, task: Task): void;
-    abstract deleteTaskAsync(id: Guid): Promise<void>;
+    abstract deleteTaskAsync(id: Guid): Promise<TaskInfo[]>;
     abstract getTaskAsync(id: Guid): Promise<TaskInfo>;
     abstract getTasksListAsync(): Promise<TaskInfo[]>;
     abstract getTasksListByUserAsync(userId: Guid): Promise<TaskInfo[]>;

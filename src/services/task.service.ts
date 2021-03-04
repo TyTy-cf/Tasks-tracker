@@ -55,8 +55,9 @@ export class TaskService implements AbstractTaskService {
         });
     }
 
-    deleteTaskAsync(id: Guid): Promise<void> {
-        return Promise.resolve(undefined);
+    deleteTaskAsync(id: Guid): Promise<TaskInfo[]> {
+        this.tasks = this.tasks.filter(task => task.id !== id);
+        return Promise.resolve(this.tasks);
     }
 
     getTaskAsync(id: Guid): Promise<TaskInfo> {

@@ -38,8 +38,11 @@
         {{ taskInfos.task.duration }}
       </td>
       <td>
-        <button (click)="taskDuplicate(taskInfos.id)" title="Dupliquer la tâche">
+        <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn">
           <fa-icon [icon]="faCopy"></fa-icon>
+        </button>
+        <button (click)="deleteTask(taskInfos.id)" title="Dupliquer la tâche" class="btn">
+          <fa-icon [icon]="faTrash"></fa-icon>
         </button>
       </td>
     </tr>
