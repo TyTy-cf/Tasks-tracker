@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
-import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-users',
@@ -8,7 +7,7 @@ import { Guid } from 'guid-typescript';
 })
 export class UsersComponent implements OnInit {
 
-  users: User[];
+  user: User;
 
   constructor() { }
 

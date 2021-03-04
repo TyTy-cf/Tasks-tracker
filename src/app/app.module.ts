@@ -18,14 +18,13 @@ import {UserService} from '../services/user.service';
 import {AbstractClientService} from '../services/abstract.client-service';
 import {ClientService} from '../services/client.service';
 import {AbstractProjectService} from '../services/abstract.projet-service';
-import {Project} from '../models/project';
 import {ProjectService} from '../services/project.service';
 import {AbstractServersService} from '../services/abstract.server-service';
 import {ServerService} from '../services/server.service';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
-  { path: 'workers', component: UsersComponent },
+  { path: 'user', component: UsersComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'tasks', pathMatch: 'full' },
   { path: 'task/delete/:id', component: TaskDeleteComponent },

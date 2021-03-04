@@ -5,3 +5,10 @@
     color: white;
   }
 }
+
+.btn-hover {
+  &:hover {
+    color: $drosalys-red;
+  }
+}
+

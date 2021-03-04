@@ -1,0 +1,82 @@
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $drosalys-blue;
+
+    .menu-toggler {
+        background-color: transparent;
+        border: 0;
+        color: white;
+        font-size: 2rem;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    img {
+        max-width: 125px;
+        object-position: center;
+        object-fit: contain;
+    }
+
+    .collapse-wrapper.collapse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .menu {
+        height: 100%;
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .profil {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .photo {
+                margin: 2rem 0;
+                border-radius: 200px;
+            }
+
+            .datas {
+                color: #FFF;
+                text-align: center;
+
+                .name {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .side-menu-tabs {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+            flex-grow: 1;
+        }
+
+        .logout {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FFF;
+            margin-top: 1rem;
+            text-decoration: none;
+
+            i {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            &:hover {
+                color: $drosalys-blue;
+            }
+        }
+    }
+}

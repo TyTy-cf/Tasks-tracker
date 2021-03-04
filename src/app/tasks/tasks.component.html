@@ -20,7 +20,7 @@
         {{ taskInfos.task.taskNumber }}
       </td>
       <td *ngIf="taskInfos.task.project.client; else emptyTd">
-        {{ taskInfos.task.project.client.lastName | uppercase }} {{ taskInfos.task.project.client.firstName }}
+        {{ taskInfos.task.project.client.lastName|uppercase }} {{ taskInfos.task.project.client.firstName }}
       </td>
       <td>
         {{ taskInfos.task.project.name }}
@@ -29,7 +29,7 @@
         {{ taskInfos.task.name }}
       </td>
       <td>
-        {{ taskInfos.task.createAt | date: "dd/MM/yyyy HH:mm:ss" }}
+        {{ taskInfos.task.createAt|date: "dd/MM/yyyy HH:mm:ss" }}
       </td>
       <td *ngIf="taskInfos.task.isWebMastering; else emptyTd">
         <fa-icon class="green" [icon]="faCheck"></fa-icon>
@@ -38,12 +38,12 @@
         {{ taskInfos.task.duration }}
       </td>
       <td>
-        <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn">
+        <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn btn-hover">
           <fa-icon [icon]="faCopy"></fa-icon>
         </button>
-        <button (click)="deleteTask(taskInfos.id)" title="Dupliquer la tâche" class="btn">
-          <fa-icon [icon]="faTrash"></fa-icon>
-        </button>
+<!--        <button (click)="deleteTask(taskInfos.id)" title="Supprimer la tâche" class="btn btn-hover">-->
+<!--          <fa-icon [icon]="faTrash"></fa-icon>-->
+<!--        </button>-->
       </td>
     </tr>
   </tbody>
