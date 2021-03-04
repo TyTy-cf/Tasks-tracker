@@ -10,9 +10,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { FormsModule } from '@angular/forms';
-import { AbstractTasksService } from '../services/abstract.tasks-service';
+import { AbstractTaskService } from '../services/abstract.task-service';
 import { TaskService } from '../services/task.service';
 import { UserProfilComponent } from './user-profil/user-profil.component';
+import {AbstractUserService} from '../services/abstract.user-service';
+import {UserService} from '../services/user.service';
+import {AbstractClientService} from '../services/abstract.client-service';
+import {ClientService} from '../services/client.service';
+import {AbstractProjectService} from '../services/abstract.projet-service';
+import {Project} from '../models/project';
+import {ProjectService} from '../services/project.service';
+import {AbstractServersService} from '../services/abstract.server-service';
+import {ServerService} from '../services/server.service';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
@@ -40,7 +49,11 @@ const routes: Routes = [
     FormsModule,
   ],
   providers: [
-    { provide: AbstractTasksService, useClass: TaskService },
+    { provide: AbstractServersService, useClass: ServerService },
+    { provide: AbstractClientService, useClass: ClientService },
+    { provide: AbstractProjectService, useClass: ProjectService },
+    { provide: AbstractUserService, useClass: UserService },
+    { provide: AbstractTaskService, useClass: TaskService },
   ],
   bootstrap: [
     AppComponent,

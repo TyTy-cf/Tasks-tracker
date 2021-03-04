@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskInfo } from '../../services/abstract.tasks-service';
+import { TaskInfo } from '../../services/abstract.task-service';
 import { User } from '../../models/user';
-import {TaskService} from '../../services/task.service';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-user-profil',
@@ -16,8 +16,7 @@ export class UserProfilComponent implements OnInit {
   constructor(private taskService: TaskService) { }
 
   async ngOnInit(): Promise<void> {
-    this.myTasks = await this.taskService.getListTasksAsync(false);
-    this.myCurrentTasks = await this.taskService.getListTasksAsync(true);
+    this.myTasks = await this.taskService.getTasksListAsync();
   }
 
 }

@@ -5,6 +5,7 @@ import {Project} from './project';
 export class Task {
   user: User;
   project: Project;
+  isWebMastering: boolean;
 
   createAt: Date;
 
@@ -47,26 +48,18 @@ export class Task {
   }
   //#endregion
 
-  //#region property webMastering
-  private _webMastering: boolean;
-  public get webMastering(): boolean {
-    return this._webMastering;
-  }
-  public set webMastering(value: boolean) {
-    this._webMastering = value;
-  }
-  //#endregion
-
   /**
    * Constructor task
    * @param name task name
    * @param user user assign on the task
    * @param project project related to the task
+   * @param isWebMastering iswebmastering
    */
-  constructor(name: string, user: User, project: Project) {
+  constructor(name: string, user: User, project: Project, isWebMastering: boolean) {
     this._name = name;
     this.user = user;
     this.project = project;
+    this.isWebMastering = isWebMastering;
     this.createAt = new Date();
   }
 

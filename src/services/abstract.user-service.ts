@@ -3,10 +3,10 @@ import { User } from 'src/models/user';
 
 export interface UserInfo {
     id: Guid;
-    task: User;
+    user: User;
 }
 
-export abstract class AbstractUsersService {
+export abstract class AbstractUserService {
     abstract createUserAsync(id: Guid, user: User): Promise<UserInfo>;
     abstract deleteUserAsync(id: Guid): Promise<void>;
     abstract editUserAsync(id: Guid, user: User): Promise<UserInfo>;

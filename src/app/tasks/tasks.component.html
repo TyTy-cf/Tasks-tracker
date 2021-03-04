@@ -9,41 +9,38 @@
       <th>Projet</th>
       <th>Nom</th>
       <th>Date</th>
-      <th>Temps passé</th>
       <th>Web Mastering</th>
+      <th>Temps passé</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks">
+    <tr *ngFor="let taskInfos of tasks">
       <td>
-        {{ task.task.taskNumber }}
+        {{ taskInfos.task.taskNumber }}
       </td>
-      <td *ngIf="task.task.project.client; else emptyTd">
-        {{ task.task.project.client.lastName | uppercase }} {{ task.task.project.client.firstName }}
-      </td>
-      <td>
-        {{ task.task.project.name }}
+      <td *ngIf="taskInfos.task.project.client; else emptyTd">
+        {{ taskInfos.task.project.client.lastName | uppercase }} {{ taskInfos.task.project.client.firstName }}
       </td>
       <td>
-        {{ task.task.name }}
+        {{ taskInfos.task.project.name }}
       </td>
       <td>
-        {{ task.task.createAt | date: "dd/MM/yyyy HH:mm:ss" }}
+        {{ taskInfos.task.name }}
       </td>
       <td>
-        {{ task.task.duration }}h
+        {{ taskInfos.task.createAt | date: "dd/MM/yyyy HH:mm:ss" }}
       </td>
-      <td *ngIf="task.task.webMastering; else emptyTd">
+      <td *ngIf="taskInfos.task.isWebMastering; else emptyTd">
         <fa-icon class="green" [icon]="faCheck"></fa-icon>
       </td>
       <td>
-        <a routerLink="/task/view/{{ task.id }}">
-          <fa-icon [icon]="faEye"></fa-icon>
-        </a>
-        <a routerLink="/task/delete/{{ task.id }}">
-          <fa-icon [icon]="trashIcon"></fa-icon>
-        </a>
+        {{ taskInfos.task.duration }}
+      </td>
+      <td>
+        <button (click)="taskDuplicate(taskInfos.id)" title="Dupliquer la tâche">
+          <fa-icon [icon]="faCopy"></fa-icon>
+        </button>
       </td>
     </tr>
   </tbody>

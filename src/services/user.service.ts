@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractUsersService, UserInfo } from './abstract.users-service';
+import { AbstractUserService, UserInfo } from './abstract.user-service';
 import { Guid } from 'guid-typescript';
 import { User } from '../models/user';
 
@@ -7,9 +7,22 @@ import { User } from '../models/user';
 @Injectable({
     providedIn: 'root',
 })
-export class UserService implements AbstractUsersService {
+export class UserService implements AbstractUserService {
 
     users: UserInfo[];
+
+    constructor() {
+        const user = new User('Kevin', 'TOURRET', 'kevin@drosalys.fr', 'pwd');
+        const user1 = new User('Théau', 'GONCALVES', 'theau@drosalys.fr', 'pwd');
+        const user2 = new User('Benjamin', 'GEORGEAULT', 'benjamin@drosalys.fr', 'pwd');
+        const user3 = new User('Nicolas', 'AMBLARD', 'nicolas@drosalys.fr', 'pwd');
+        this.users = [
+            {id: Guid.create(), user},
+            {id: Guid.create(), user: user1},
+            {id: Guid.create(), user: user2},
+            {id: Guid.create(), user: user3},
+        ];
+    }
 
     createUserAsync(id: Guid, user: User): Promise<UserInfo> {
         return Promise.resolve(undefined);
@@ -28,7 +41,7 @@ export class UserService implements AbstractUsersService {
     }
 
     getUsersList(): Promise<UserInfo[]> {
-        return Promise.resolve([]);
+        return Promise.resolve(this.users);
     }
 
 }

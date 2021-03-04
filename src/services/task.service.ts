@@ -1,80 +1,83 @@
-import { AbstractTasksService, TaskInfo } from './abstract.tasks-service';
+import { AbstractTaskService, TaskInfo } from './abstract.task-service';
 import { Injectable } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Task } from 'src/models/task';
-import {User} from '../models/user';
-import {Project} from '../models/project';
-import {Server} from '../models/server';
-import {Client} from '../models/client';
+import { UserService } from './user.service';
+import { ProjectService } from './project.service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class TaskService implements AbstractTasksService {
+export class TaskService implements AbstractTaskService {
 
     tasks: TaskInfo[];
 
-    constructor() {
-        const user = new User('Kevin', 'TOURRET', 'kevin@drosalys.fr', 'pwd');
-        const server = new Server('drosalys JS', 'http://127.0.0.1:4200');
-        const server2 = new Server('drosalys-php-cdn', 'http://127.0.0.1:8080');
-        const client = new Client('Clément', 'Barsalon', '0698969392');
-        const project = new Project('Drosalys projects', server);
-        const project2 = new Project('CDN', server2);
-        project2.client = client;
-        // project.client = client;
-        const task = new Task('Doing TrackR Drosalys', user, project);
-        const task2 = new Task('Doing trainings', user, project);
-        const task3 = new Task('Doing things on CDN', user, project2);
-        task.webMastering = true;
+    constructor(
+        private userService: UserService,
+        private projectService: ProjectService
+    ) {
+        const task = new Task('Doing TrackR Drosalys', userService.users[0].user, projectService.projects[0].project, false);
+        const task1 = new Task('1M2P', userService.users[0].user,  projectService.projects[1].project, false);
+        const task2 = new Task('Doing trainings', userService.users[1].user,  projectService.projects[1].project, true);
+        const task3 = new Task('Doing things on CDN', userService.users[2].user,  projectService.projects[0].project, false);
         task.duration = 2.5;
         task.taskNumber = 3541;
-        task2.webMastering = false;
+        task1.duration = 14;
+        task1.taskNumber = 1458;
         task2.duration = 35;
         task2.taskNumber = 4589;
-        task3.webMastering = true;
         task3.duration = 21;
         task3.taskNumber = 2145;
-        const taskInfo = {
-            id: Guid.create(),
-            task
-        };
-        const taskInfo2 = {
-            id: Guid.create(),
-            task: task2
-        };
-        const taskInfo3 = {
-            id: Guid.create(),
-            task: task3
-        };
-        this.tasks = [taskInfo, taskInfo2, taskInfo3];
+        this.tasks = [
+            {
+                id: Guid.create(),
+                task
+            },
+            {
+                id: Guid.create(),
+                task: task1
+            },
+            {
+                id: Guid.create(),
+                task: task2
+            },
+            {
+                id: Guid.create(),
+                task: task3
+            }
+        ];
     }
 
-    createTaskAsync(id: Guid, task: Task): Promise<TaskInfo> {
-        return Promise.resolve(undefined);
+    createTaskAsync(id: Guid, task: Task): void {
+        this.tasks.push({
+            id,
+            task
+        });
     }
 
     deleteTaskAsync(id: Guid): Promise<void> {
         return Promise.resolve(undefined);
     }
 
-    editTaskAsync(id: Guid, task: Task): Promise<TaskInfo> {
-        return Promise.resolve(undefined);
+    getTaskAsync(id: Guid): Promise<TaskInfo> {
+        if (this.tasks.length === 0) {
+            return Promise.reject(new Error('No task available'));
+        }
+        for (const task of this.tasks) {
+            if (task.id === id) {
+                return new Promise((resolve, reject) => {
+                    resolve(task);
+                });
+            }
+        }
+        return Promise.reject(new Error('Didn\'t find the task'));
     }
 
-    getTaskAsync(id: Guid): Promise<Task> {
-        return Promise.resolve(undefined);
-    }
-
-    getTasksListByUserAsync(userId: Guid): Promise<TaskInfo[]> {
-        return Promise.resolve([]);
-    }
-
-    getListTasksAsync(): Promise<TaskInfo[]> {
+    getTasksListAsync(): Promise<TaskInfo[]> {
         return Promise.resolve(this.tasks);
     }
 
-    getTasksListByUserAndLastDateAsync(userId: Guid): Promise<TaskInfo[]> {
+    getTasksListByUserAsync(userId: Guid): Promise<TaskInfo[]> {
         return Promise.resolve([]);
     }
 
