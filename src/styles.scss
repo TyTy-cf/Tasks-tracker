@@ -1,9 +1,9 @@
 
 @import "styles/bootstrap";
 
-@import "./styles/variables";
+@import "styles/shared/variables";
 
-@import "./styles/front/colors.scss";
+@import "./styles/front/side-menu";
 
 @import "./styles/front/buttons";
 
@@ -11,8 +11,6 @@
 
 @import "./styles/front/lists.scss";
 
-@import "./styles/front/forms.scss";
-
-@import "./styles/front/front.scss";
+@import "styles/front/global";
 
 @import "./styles/shared/side-menu";

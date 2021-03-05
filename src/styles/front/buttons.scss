@@ -12,3 +12,12 @@
   }
 }
 
+.btn-drosalys-red {
+  color: $btn-white;
+  background-color: $drosalys-red;
+  &:hover {
+    color: $btn-white;
+    background-color: $drosalys-blue;
+  }
+}
+

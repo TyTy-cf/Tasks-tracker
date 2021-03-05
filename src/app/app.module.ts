@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { UsersComponent } from './users/users.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -21,12 +20,12 @@ import {AbstractProjectService} from '../services/abstract.projet-service';
 import {ProjectService} from '../services/project.service';
 import {AbstractServersService} from '../services/abstract.server-service';
 import {ServerService} from '../services/server.service';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
-  { path: 'user', component: UsersComponent },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'task/delete/:id', component: TaskDeleteComponent },
   { path: 'task/view/:id', component: TaskViewComponent },
 ];
@@ -35,11 +34,11 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     TasksComponent,
-    UsersComponent,
     LoginComponent,
     TaskDeleteComponent,
     TaskViewComponent,
     UserProfilComponent,
+    SideMenuComponent,
   ],
   imports: [
     BrowserModule,
