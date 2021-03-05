@@ -26,12 +26,12 @@
         {{ taskInfos.task.project.name }}
       </td>
       <td>
-        {{ taskInfos.task.name }}
+        {{ taskInfos.task.title }}
       </td>
       <td>
         {{ taskInfos.task.createAt|date: "dd/MM/yyyy HH:mm:ss" }}
       </td>
-      <td *ngIf="taskInfos.task.isWebMastering; else emptyTd">
+      <td *ngIf="taskInfos.task.continue; else emptyTd">
         <fa-icon class="success" [icon]="faCheck"></fa-icon>
       </td>
       <td>

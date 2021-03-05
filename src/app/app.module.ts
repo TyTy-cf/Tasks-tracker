@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
 import { TaskViewComponent } from './task-view/task-view.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AbstractTaskService } from '../services/abstract.task-service';
 import { TaskService } from '../services/task.service';
 import { UserProfilComponent } from './user-profil/user-profil.component';
@@ -21,6 +21,8 @@ import {ProjectService} from '../services/project.service';
 import {AbstractServersService} from '../services/abstract.server-service';
 import {ServerService} from '../services/server.service';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { TaskFormComponent } from './task-form/task-form.component';
+import { TaskCreateComponent } from './task-create/task-create.component';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
@@ -28,6 +30,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'task/delete/:id', component: TaskDeleteComponent },
   { path: 'task/view/:id', component: TaskViewComponent },
+  { path: 'task/new', component: TaskCreateComponent },
 ];
 
 @NgModule({
@@ -39,12 +42,15 @@ const routes: Routes = [
     TaskViewComponent,
     UserProfilComponent,
     SideMenuComponent,
+    TaskFormComponent,
+    TaskCreateComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: AbstractServersService, useClass: ServerService },

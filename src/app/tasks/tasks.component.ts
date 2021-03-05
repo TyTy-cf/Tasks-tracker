@@ -30,12 +30,11 @@ export class TasksComponent implements OnInit {
 
   duplicateTask(id: Guid): void {
     this.taskService.getTaskAsync(id).then((t) => {
-      const newTask = new Task(
-          t.task.name,
-          t.task.user,
-          t.task.project,
-          t.task.isWebMastering
-      );
+      const newTask = new Task();
+      newTask.title = t.task.title;
+      newTask.user = t.task.user;
+      newTask.project = t.task.project;
+      newTask.continue = t.task.continue;
       newTask.duration = t.task.duration;
       this.taskService.createTaskAsync(Guid.create(), newTask);
     });

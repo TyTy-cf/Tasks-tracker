@@ -1,25 +1,21 @@
 
-
 <div class="card center-h-v">
   <div class="card-body">
     <img class="center-h" src="../../assets/images/trackrIllustrator.png" alt="logo-trackr">
     <div *ngIf="!user">
-      <form>
+      <form [formGroup]="userForm">
         <div>
           <label for="email" class="form-label"></label>
-          <input type="text" class="form-control" id="email" placeholder="Email">
+          <input id="email" class="form-control" type="text" formControlName="email" placeholder="Email">
         </div>
         <div class="mb-2">
           <label for="password" class="form-label"></label>
-          <input type="password" class="form-control" id="password" placeholder="Password">
+          <input id="password" class="form-control" type="password" formControlName="password" placeholder="Password">
         </div>
-        <div>
-          <a href="#">Mot de passe oublié</a>
-        </div>
-        <button (click)="login()" class="btn btn-drosalys-red center-h">Valider</button>
+        <a href="#">Mot de passe oublié</a>
+        <button class="btn btn-drosalys-red center-h" type="submit">Valider</button>
       </form>
     </div>
   </div>
 </div>
-
 

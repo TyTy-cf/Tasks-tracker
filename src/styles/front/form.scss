@@ -1,0 +1,23 @@
+
+.form-tracker {
+  background-color: $drosalys-blue;
+  color: $btn-white;
+  border: solid;
+  border-radius: 24px;
+  padding: 40px;
+
+  .form-footer {
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: $btn-white;
+    color: $drosalys-blue;
+    border-radius: 15px;
+    margin-right: 20px;
+    &:hover {
+      color: $btn-white;
+      background-color: $drosalys-red;
+    }
+  }
+}

@@ -5,8 +5,7 @@ import {Project} from './project';
 export class Task {
   user: User;
   project: Project;
-  isWebMastering: boolean;
-
+  continue: boolean;
   createAt: Date;
 
   //#region property taskNumber
@@ -20,15 +19,15 @@ export class Task {
   //#endregion
 
   //#region property name
-  private _name: string;
-  public get name(): string {
-    return this._name;
+  private _title: string;
+  public get title(): string {
+    return this._title;
   }
-  public set name(value: string) {
+  public set title(value: string) {
     if (!value) {
       throw new Error('The name cannot be empty');
     }
-    this._name = value;
+    this._title = value;
   }
   //#endregion
 
@@ -48,19 +47,6 @@ export class Task {
   }
   //#endregion
 
-  /**
-   * Constructor task
-   * @param name task name
-   * @param user user assign on the task
-   * @param project project related to the task
-   * @param isWebMastering iswebmastering
-   */
-  constructor(name: string, user: User, project: Project, isWebMastering: boolean) {
-    this._name = name;
-    this.user = user;
-    this.project = project;
-    this.isWebMastering = isWebMastering;
-    this.createAt = new Date();
-  }
+  constructor() { }
 
 }

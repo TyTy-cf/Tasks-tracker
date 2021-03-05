@@ -16,10 +16,26 @@ export class TaskService implements AbstractTaskService {
         private userService: UserService,
         private projectService: ProjectService
     ) {
-        const task = new Task('Doing TrackR Drosalys', userService.users[0].user, projectService.projects[0].project, false);
-        const task1 = new Task('1M2P', userService.users[0].user,  projectService.projects[1].project, false);
-        const task2 = new Task('Doing trainings', userService.users[1].user,  projectService.projects[1].project, true);
-        const task3 = new Task('Doing things on CDN', userService.users[2].user,  projectService.projects[0].project, false);
+        const task = new Task();
+        task.title = 'Doing TrackR Drosalys';
+        task.user = userService.users[0].user;
+        task.project = projectService.projects[0].project;
+        task.continue = false;
+        const task1 = new Task();
+        task1.title = '1M2P';
+        task1.user = userService.users[0].user;
+        task1.project = projectService.projects[1].project;
+        task1.continue = false;
+        const task2 = new Task();
+        task2.title = 'Doing trainings';
+        task2.user = userService.users[1].user;
+        task2.project = projectService.projects[1].project;
+        task2.continue = true;
+        const task3 = new Task();
+        task3.title = 'oing things on CDN';
+        task3.user = userService.users[2].user;
+        task3.project = projectService.projects[0].project;
+        task3.continue = false;
         task.duration = 2.5;
         task.taskNumber = 3541;
         task1.duration = 14;
