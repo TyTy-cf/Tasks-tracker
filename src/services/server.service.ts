@@ -8,19 +8,17 @@ import { Server } from '../models/server';
 })
 export class ServerService implements AbstractServersService {
 
-  servers: ServerInfo[];
+  servers: ServerInfo[] = new Array<ServerInfo>();
 
   constructor() {
-    this.servers = [
-      {
+    this.servers.push({
         id: Guid.create(),
         server: new Server('drosalys-php-1m2p', 'http://127.126.125.124:4200')
-      },
-      {
-        id: Guid.create(),
-        server: new Server('drosalys-php-cdn', 'http://127.0.0.1:8080')
-      },
-    ];
+    });
+    this.servers.push({
+      id: Guid.create(),
+      server: new Server('drosalys-php-cdn', 'http://127.0.0.1:8080')
+    });
   }
 
   createServerAsync(id: Guid, client: Server): Promise<ServerInfo> {

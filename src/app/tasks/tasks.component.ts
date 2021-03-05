@@ -22,8 +22,7 @@ export class TasksComponent implements OnInit {
   public faCopy = faCopy;
   public faTrash = faTrash;
 
-  constructor(private taskService: TaskService) {
-  }
+  constructor(private taskService: TaskService) { }
 
   async ngOnInit(): Promise<void> {
     this.tasks = await this.taskService.getTasksListAsync();

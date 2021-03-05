@@ -10,7 +10,7 @@ import { ProjectService } from './project.service';
 })
 export class TaskService implements AbstractTaskService {
 
-    tasks: TaskInfo[];
+    tasks: TaskInfo[] = new Array<TaskInfo>();
 
     constructor(
         private userService: UserService,
@@ -28,31 +28,14 @@ export class TaskService implements AbstractTaskService {
         task2.taskNumber = 4589;
         task3.duration = 21;
         task3.taskNumber = 2145;
-        this.tasks = [
-            {
-                id: Guid.create(),
-                task
-            },
-            {
-                id: Guid.create(),
-                task: task1
-            },
-            {
-                id: Guid.create(),
-                task: task2
-            },
-            {
-                id: Guid.create(),
-                task: task3
-            }
-        ];
+        this.tasks.push({id: Guid.create(), task});
+        this.tasks.push({id: Guid.create(), task: task1});
+        this.tasks.push({id: Guid.create(), task: task2});
+        this.tasks.push({id: Guid.create(), task: task3});
     }
 
     createTaskAsync(id: Guid, task: Task): void {
-        this.tasks.push({
-            id,
-            task
-        });
+        this.tasks.push({id, task});
     }
 
     deleteTaskAsync(id: Guid): Promise<TaskInfo[]> {
@@ -60,7 +43,7 @@ export class TaskService implements AbstractTaskService {
         return Promise.resolve(this.tasks);
     }
 
-    getTaskAsync(id: Guid): Promise<TaskInfo> {
+    async getTaskAsync(id: Guid): Promise<TaskInfo> {
         if (this.tasks.length === 0) {
             return Promise.reject(new Error('No task available'));
         }

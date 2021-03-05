@@ -9,15 +9,13 @@ import { Client } from '../models/client';
 })
 export class ClientService implements AbstractClientService {
 
-    clients: ClientInfo[];
+    clients: ClientInfo[] = new Array<ClientInfo>();
 
     constructor() {
         const client = new Client('Clément', 'Barsalon', '0615595753', 'barsalon.clement@cdn.fr');
         const client1 = new Client('Maxime', 'BONNOT', '0612568754', 'maxime.bonnot@1m2p.fr');
-        this.clients = [
-            {id: Guid.create(), client},
-            {id: Guid.create(), client: client1},
-        ];
+        this.clients.push({id: Guid.create(), client});
+        this.clients.push({id: Guid.create(), client: client1});
     }
 
     createClientAsync(id: Guid, client: Client): Promise<ClientInfo> {

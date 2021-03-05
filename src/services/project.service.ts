@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import { AbstractProjectService, ProjectInfo } from './abstract.projet-service';
 import { Project } from '../models/project';
 import { Guid } from 'guid-typescript';
@@ -10,22 +10,28 @@ import { ClientService } from './client.service';
 })
 export class ProjectService implements AbstractProjectService {
 
-    projects: ProjectInfo[];
+    projects: ProjectInfo[] = new Array<ProjectInfo>();
 
     constructor(
         private serverService: ServerService,
         private clientService: ClientService
     ) {
-        this.projects = [
-            {
-                id: Guid.create(),
-                project: new Project('CDN', serverService.getServersList()[1], clientService.getClientsList()[0])
-            },
-            {
-                id: Guid.create(),
-                project: new Project('1M2P', serverService.getServersList()[0], clientService.getClientsList()[1])
-            },
-        ];
+        this.projects.push({
+            id: Guid.create(),
+            project: new Project(
+                'CDN',
+                this.serverService.servers[1].server,
+                this.clientService.clients[0].client
+            )
+        });
+        this.projects.push({
+            id: Guid.create(),
+            project: new Project(
+                '1M2P',
+                this.serverService.servers[0].server,
+                this.clientService.clients[1].client
+            )
+        });
     }
 
     createProjectAsync(id: Guid, project: Project): Promise<ProjectInfo> {

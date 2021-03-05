@@ -32,10 +32,10 @@
         {{ taskInfos.task.createAt|date: "dd/MM/yyyy HH:mm:ss" }}
       </td>
       <td *ngIf="taskInfos.task.isWebMastering; else emptyTd">
-        <fa-icon class="green" [icon]="faCheck"></fa-icon>
+        <fa-icon class="success" [icon]="faCheck"></fa-icon>
       </td>
       <td>
-        {{ taskInfos.task.duration }}
+        {{ taskInfos.task.duration }}h
       </td>
       <td>
         <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn btn-hover">

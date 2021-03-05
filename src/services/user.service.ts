@@ -9,19 +9,17 @@ import { User } from '../models/user';
 })
 export class UserService implements AbstractUserService {
 
-    users: UserInfo[];
+    users: UserInfo[] = new Array<UserInfo>();
 
     constructor() {
         const user = new User('Kevin', 'TOURRET', 'kevin@drosalys.fr', 'pwd');
         const user1 = new User('Théau', 'GONCALVES', 'theau@drosalys.fr', 'pwd');
         const user2 = new User('Benjamin', 'GEORGEAULT', 'benjamin@drosalys.fr', 'pwd');
         const user3 = new User('Nicolas', 'AMBLARD', 'nicolas@drosalys.fr', 'pwd');
-        this.users = [
-            {id: Guid.create(), user},
-            {id: Guid.create(), user: user1},
-            {id: Guid.create(), user: user2},
-            {id: Guid.create(), user: user3},
-        ];
+        this.users.push({id: Guid.create(), user});
+        this.users.push({id: Guid.create(), user: user1});
+        this.users.push({id: Guid.create(), user: user2});
+        this.users.push({id: Guid.create(), user: user3});
     }
 
     createUserAsync(id: Guid, user: User): Promise<UserInfo> {
