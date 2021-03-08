@@ -22,12 +22,15 @@ import {SideMenuComponent} from './side-menu/side-menu.component';
 import {TaskFormComponent} from './task-form/task-form.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ServersComponent } from './servers/servers.component';
+import { ClientsComponent } from './clients/clients.component';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'servers', component: ServersComponent },
+  { path: 'clients', component: ClientsComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'menu', component: SideMenuComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'task/delete/:id', component: TaskDeleteComponent },
 ];
@@ -42,6 +45,7 @@ const routes: Routes = [
     TaskFormComponent,
     ProjectsComponent,
     ServersComponent,
+    ClientsComponent,
   ],
   imports: [
     BrowserModule,

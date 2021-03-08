@@ -12,14 +12,22 @@ export class ClientService implements AbstractClientService {
     clients: ClientInfo[] = new Array<ClientInfo>();
 
     constructor() {
-        const client = new Client('Clément', 'Barsalon', '0615595753', 'barsalon.clement@cdn.fr');
-        const client1 = new Client('Maxime', 'BONNOT', '0612568754', 'maxime.bonnot@1m2p.fr');
+        const client = new Client();
+        client.lastName = 'Barsalon';
+        client.firstName = 'Clément';
+        client.phone = '0615595753';
+        client.email = 'barsalon.clement@cdn.fr';
+        const client1 = new Client();
+        client1.lastName = 'Maxime';
+        client1.firstName = 'BONNOT';
+        client1.phone = '0612568754';
+        client1.email = 'maxime.bonnot@1m2p.fr';
         this.clients.push({id: Guid.create(), client});
         this.clients.push({id: Guid.create(), client: client1});
     }
 
-    createClientAsync(id: Guid, client: Client): Promise<ClientInfo> {
-        return Promise.resolve(undefined);
+    async addClient(id: Guid, client: Client): Promise<void> {
+        await this.clients.push({id, client});
     }
 
     deleteClientAsync(id: Guid): Promise<void> {

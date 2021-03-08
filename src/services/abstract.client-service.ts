@@ -7,7 +7,7 @@ export interface ClientInfo {
 }
 
 export abstract class AbstractClientService {
-    abstract createClientAsync(id: Guid, client: Client): Promise<ClientInfo>;
+    abstract addClient(id: Guid, client: Client): Promise<void>;
     abstract deleteClientAsync(id: Guid): Promise<void>;
     abstract editClientAsync(id: Guid, client: Client): Promise<ClientInfo>;
     abstract getClientAsync(id: Guid): Promise<ClientInfo>;

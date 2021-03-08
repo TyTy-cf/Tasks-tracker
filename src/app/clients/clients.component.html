@@ -1,0 +1,54 @@
+
+<h3>Les clients</h3>
+
+<form (ngSubmit)="onSubmit()" #clientForm="ngForm">
+    <table class="table table-striped title-blue">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Téléphone</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let clientInfo of clients">
+            <td>
+                {{ clientInfo.client.lastName }}
+            </td>
+            <td>
+                {{ clientInfo.client.firstName }}
+            </td>
+            <td>
+                {{ clientInfo.client.phone }}
+            </td>
+            <td>
+                {{ clientInfo.client.email }}
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <input [(ngModel)]="client.lastName" type="text" class="form-control" id="lastName" name="lastName" required>
+            </th>
+            <th>
+                <input [(ngModel)]="client.firstName" type="text" class="form-control" id="firstName" name="firstName" required>
+            </th>
+            <th>
+                <input [(ngModel)]="client.phone" type="text" class="form-control" id="phone" name="phone" required>
+            </th>
+            <th>
+                <input [(ngModel)]="client.email" type="text" class="form-control" id="email" name="email" required>
+            </th>
+            <th>
+                <button (click)="addClient(); clientForm.reset()" title="Créer client" class="btn btn-hover">
+                    <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
+                </button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</form>
