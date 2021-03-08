@@ -46,8 +46,15 @@ export class ProjectService implements AbstractProjectService {
         return Promise.resolve(undefined);
     }
 
-    getProjectAsync(id: Guid): Promise<Project> {
-        return Promise.resolve(undefined);
+    getProjectAsync(id: Guid): Promise<ProjectInfo> {
+        if (this.projects.length === 0) {
+            return Promise.reject(new Error('No task available'));
+        }
+        const project = this.projects.filter(p => p.id.equals(id))[0];
+        if (project) {
+            return Promise.resolve(project);
+        }
+        return Promise.reject(new Error('Didn\'t find the project'));
     }
 
     getProjectsList(): Promise<ProjectInfo[]> {

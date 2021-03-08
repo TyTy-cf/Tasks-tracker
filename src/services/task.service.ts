@@ -50,8 +50,8 @@ export class TaskService implements AbstractTaskService {
         this.tasks.push({id: Guid.create(), task: task3});
     }
 
-    addTask(id: Guid, task: Task): void {
-        this.tasks.push({id, task});
+    async addTask(id: Guid, task: Task): Promise<void> {
+        await this.tasks.push({id, task});
     }
 
     deleteTaskAsync(id: Guid): Promise<TaskInfo[]> {
@@ -63,12 +63,9 @@ export class TaskService implements AbstractTaskService {
         if (this.tasks.length === 0) {
             return Promise.reject(new Error('No task available'));
         }
-        for (const task of this.tasks) {
-            if (task.id === id) {
-                return new Promise((resolve, reject) => {
-                    resolve(task);
-                });
-            }
+        const task = this.tasks.filter(t => t.id.equals(id))[0];
+        if (task) {
+            return Promise.resolve(task);
         }
         return Promise.reject(new Error('Didn\'t find the task'));
     }

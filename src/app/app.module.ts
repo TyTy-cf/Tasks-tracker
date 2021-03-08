@@ -22,7 +22,6 @@ import {AbstractServersService} from '../services/abstract.server-service';
 import {ServerService} from '../services/server.service';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { TaskFormComponent } from './task-form/task-form.component';
-import { TaskCreateComponent } from './task-create/task-create.component';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
@@ -30,7 +29,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'task/delete/:id', component: TaskDeleteComponent },
   { path: 'task/view/:id', component: TaskViewComponent },
-  { path: 'task/new', component: TaskCreateComponent },
 ];
 
 @NgModule({
@@ -43,7 +41,6 @@ const routes: Routes = [
     UserProfilComponent,
     SideMenuComponent,
     TaskFormComponent,
-    TaskCreateComponent,
   ],
   imports: [
     BrowserModule,
