@@ -32,7 +32,7 @@ export class TaskService implements AbstractTaskService {
         task2.project = projectService.projects[1].project;
         task2.continue = true;
         const task3 = new Task();
-        task3.title = 'oing things on CDN';
+        task3.title = 'Doing things on CDN';
         task3.user = userService.users[2].user;
         task3.project = projectService.projects[0].project;
         task3.continue = false;
@@ -50,7 +50,7 @@ export class TaskService implements AbstractTaskService {
         this.tasks.push({id: Guid.create(), task: task3});
     }
 
-    createTaskAsync(id: Guid, task: Task): void {
+    addTask(id: Guid, task: Task): void {
         this.tasks.push({id, task});
     }
 

@@ -36,7 +36,7 @@ export class TasksComponent implements OnInit {
       newTask.project = t.task.project;
       newTask.continue = t.task.continue;
       newTask.duration = t.task.duration;
-      this.taskService.createTaskAsync(Guid.create(), newTask);
+      this.taskService.addTask(Guid.create(), newTask);
     });
   }
 

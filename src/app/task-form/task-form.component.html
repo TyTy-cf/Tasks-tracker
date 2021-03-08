@@ -3,19 +3,25 @@
     <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
         <div class="form-group">
             <label for="title">Titre</label>
-            <input [(ngModel)]="task.title" type="text" class="form-control" id="title" required name="title">
+            <input [(ngModel)]="task.title" type="text" class="form-control" id="title" name="title" required>
         </div>
         <div class="form-group">
             <label for="createAt">Date</label>
-            <input [(ngModel)]="task.createAt" type="date" class="form-control" id="createAt" required name="createAt">
+            <input [(ngModel)]="task.createAt" type="date" class="form-control" id="createAt" name="createAt" required>
+        </div>
+        <div class="form-group">
+            <label for="project">Projet</label>
+            <select [(ngModel)]="task.project" id="project" name="project" class="form-select">
+                <option *ngFor="let projectInfo of projects" [value]="projectInfo.project">{{ projectInfo.project.name }}</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="duration">Temps passé</label>
-            <input [(ngModel)]="task.duration" type="number" step=".5" class="form-control" id="duration" required name="duration">
+            <input [(ngModel)]="task.duration" type="number" step=".5" class="form-control" id="duration" name="duration" required>
         </div>
-        <div class="form-group">
-            <label for="continue">Continue ?</label>
-            <input [(ngModel)]="task.continue" type="checkbox" class="form-control" id="continue" name="continue">
+        <div class="form-check">
+            <label for="continue">Est continue</label>
+            <input [(ngModel)]="task.continue" type="checkbox" class="form-check-input" id="continue" name="continue">
         </div>
         <div class="form-row form-footer center-h">
             <button class="btn" type="submit" (click)="addTask(); taskForm.reset()" [disabled]="!taskForm.form.valid">Enregistrer</button>

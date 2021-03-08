@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/models/task';
 import { TaskService } from '../../services/task.service';
 import {Guid} from 'guid-typescript';
+import {ProjectInfo} from '../../services/abstract.projet-service';
+import {ProjectService} from '../../services/project.service';
 
 @Component({
   selector: 'app-task-form',
@@ -11,8 +13,12 @@ export class TaskFormComponent implements OnInit {
 
   submitted = false;
   task: Task;
+  projects: ProjectInfo[];
 
-  constructor(private taskService: TaskService) {
+  constructor(
+      private taskService: TaskService,
+      private projectService: ProjectService
+  ) {
     this.task = new Task();
   }
 
@@ -20,11 +26,11 @@ export class TaskFormComponent implements OnInit {
     this.submitted = true;
   }
 
-  ngOnInit(): void {
+  addTask(): void {
+    this.taskService.addTask(Guid.create(), this.task);
   }
 
-  addTask(): void {
-    this.taskService.createTaskAsync(Guid.create(), this.task);
-    alert(this.taskService.tasks.length);
+  async ngOnInit(): Promise<void> {
+    this.projects = await this.projectService.getProjectsList();
   }
 }

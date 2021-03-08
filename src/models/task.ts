@@ -3,10 +3,37 @@ import {User} from './user';
 import {Project} from './project';
 
 export class Task {
-  user: User;
-  project: Project;
   continue: boolean;
-  createAt: Date;
+
+  //#region property createAt
+  private _createAt: string;
+  public get createAt(): string {
+    return this._createAt;
+  }
+  public set createAt(value: string) {
+    this._createAt = value;
+  }
+  //#endregion
+
+  //#region property project
+  private _project: Project;
+  public get project(): Project {
+    return this._project;
+  }
+  public set project(value: Project) {
+    this._project = value;
+  }
+  //#endregion
+
+  //#region property user
+  private _user: User;
+  public get user(): User {
+    return this._user;
+  }
+  public set user(value: User) {
+    this._user = value;
+  }
+  //#endregion
 
   //#region property taskNumber
   private _taskNumber: number;
