@@ -10,7 +10,7 @@
         <th>Projet</th>
         <th>Nom</th>
         <th>Date</th>
-        <th>Web Mastering</th>
+        <th>Continue</th>
         <th>Temps passé</th>
         <th>Action</th>
       </tr>
@@ -39,7 +39,7 @@
           {{ taskInfos.task.duration }}h
         </td>
         <td>
-          <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn btn-hover">
+          <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn btn-drosalys-blue">
             <fa-icon [icon]="faCopy"></fa-icon>
           </button>
   <!--        <button (click)="deleteTask(taskInfos.id)" title="Supprimer la tâche" class="btn btn-hover">-->
@@ -63,7 +63,7 @@
             <input [(ngModel)]="task.title" type="text" class="form-control" id="title" name="title" required>
           </th>
           <th>
-            <input [(ngModel)]="task.createAt" type="date" class="form-control" id="createAt" name="createAt" required>
+            <input [ngModel]="task.createAt|date:'yyyy-MM-dd'" type="date" class="form-control" id="createAt" name="createAt" required>
           </th>
           <th>
             <input [(ngModel)]="task.continue" type="checkbox" class="form-check" id="continue" name="continue">
@@ -73,7 +73,7 @@
           </th>
           <th>
             <button (click)="addTask(); taskForm.reset()" title="Créer tâche" class="btn btn-hover">
-              <fa-icon class="success" [icon]="faPlusCircle"></fa-icon>
+              <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
             </button>
           </th>
         </tr>

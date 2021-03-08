@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { faEye, faCheck, faCopy, faTrash, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import { TaskService } from '../../services/task.service';
-import {TaskInfo } from '../../services/abstract.task-service';
+import {faEye, faCheck, faCopy, faTrash, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {TaskService} from '../../services/task.service';
+import {TaskInfo} from '../../services/abstract.task-service';
 import {Guid} from 'guid-typescript';
 import {Task} from '../../models/task';
 import {ProjectInfo} from '../../services/abstract.projet-service';
@@ -17,8 +17,8 @@ export class TasksComponent implements OnInit {
    * @private TaskInfo
    */
   public tasks: TaskInfo[];
-  projects: ProjectInfo[];
-  submitted = false;
+  public projects: ProjectInfo[];
+  private submitted = false;
 
   @Input()
   task: Task;
@@ -36,6 +36,7 @@ export class TasksComponent implements OnInit {
       private projectService: ProjectService
   ) {
     this.task = new Task();
+    this.task.createAt = new Date();
   }
 
   async ngOnInit(): Promise<void> {
@@ -58,14 +59,8 @@ export class TasksComponent implements OnInit {
 
   async addTask(): Promise<void> {
     await this.projectService.getProjectAsync(this.selectedProjectGuid).then((p) => {
-      const newTask = new Task();
-      newTask.title = this.task.title;
-      newTask.user = this.task.user;
-      newTask.project = p.project;
-      newTask.createAt = this.task.createAt;
-      newTask.continue = this.task.continue;
-      newTask.duration = this.task.duration;
-      this.taskService.addTask(Guid.create(), newTask);
+      this.task.project = p.project;
+      this.taskService.addTask(Guid.create(), this.task);
     });
   }
 

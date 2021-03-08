@@ -21,3 +21,10 @@
   }
 }
 
+.btn-drosalys-blue {
+  color: $drosalys-blue;
+  &:hover {
+    color: $drosalys-red;
+  }
+}
+

@@ -30,8 +30,15 @@ export class ClientService implements AbstractClientService {
         return Promise.resolve(undefined);
     }
 
-    getClientAsync(id: Guid): Promise<Client> {
-        return Promise.resolve(undefined);
+    async getClientAsync(id: Guid): Promise<ClientInfo> {
+        if (this.clients.length === 0) {
+            return Promise.reject(new Error('No client available'));
+        }
+        const client = this.clients.filter(c => c.id.equals(id))[0];
+        if (client) {
+            return Promise.resolve(client);
+        }
+        return Promise.reject(new Error('Didn\'t find the client'));
     }
 
     getClientsList(): Promise<ClientInfo[]> {

@@ -7,11 +7,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
-import { TaskViewComponent } from './task-view/task-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AbstractTaskService } from '../services/abstract.task-service';
 import { TaskService } from '../services/task.service';
-import { UserProfilComponent } from './user-profil/user-profil.component';
 import {AbstractUserService} from '../services/abstract.user-service';
 import {UserService} from '../services/user.service';
 import {AbstractClientService} from '../services/abstract.client-service';
@@ -20,15 +18,18 @@ import {AbstractProjectService} from '../services/abstract.projet-service';
 import {ProjectService} from '../services/project.service';
 import {AbstractServersService} from '../services/abstract.server-service';
 import {ServerService} from '../services/server.service';
-import { SideMenuComponent } from './side-menu/side-menu.component';
-import { TaskFormComponent } from './task-form/task-form.component';
+import {SideMenuComponent} from './side-menu/side-menu.component';
+import {TaskFormComponent} from './task-form/task-form.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { ServersComponent } from './servers/servers.component';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'servers', component: ServersComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'task/delete/:id', component: TaskDeleteComponent },
-  { path: 'task/view/:id', component: TaskViewComponent },
 ];
 
 @NgModule({
@@ -37,10 +38,10 @@ const routes: Routes = [
     TasksComponent,
     LoginComponent,
     TaskDeleteComponent,
-    TaskViewComponent,
-    UserProfilComponent,
     SideMenuComponent,
     TaskFormComponent,
+    ProjectsComponent,
+    ServersComponent,
   ],
   imports: [
     BrowserModule,

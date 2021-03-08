@@ -7,8 +7,8 @@ export interface ProjectInfo {
 }
 
 export abstract class AbstractProjectService {
-    abstract createProjectAsync(id: Guid, project: Project): Promise<ProjectInfo>;
-    abstract deleteProjectAsync(id: Guid): Promise<void>;
+    abstract addProject(id: Guid, project: Project): Promise<void>;
+    abstract deleteProjectAsync(id: Guid): Promise<ProjectInfo[]>;
     abstract editProjectAsync(id: Guid, project: Project): Promise<ProjectInfo>;
     abstract getProjectAsync(id: Guid): Promise<ProjectInfo>;
     abstract getProjectsList(): Promise<ProjectInfo[]>;

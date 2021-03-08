@@ -6,11 +6,11 @@ export class Task {
   continue: boolean;
 
   //#region property createAt
-  private _createAt: string;
-  public get createAt(): string {
+  private _createAt: Date;
+  public get createAt(): Date {
     return this._createAt;
   }
-  public set createAt(value: string) {
+  public set createAt(value: Date) {
     this._createAt = value;
   }
   //#endregion
