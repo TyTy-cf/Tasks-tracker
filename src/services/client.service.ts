@@ -30,8 +30,9 @@ export class ClientService implements AbstractClientService {
         await this.clients.push({id, client});
     }
 
-    deleteClientAsync(id: Guid): Promise<void> {
-        return Promise.resolve(undefined);
+    async deleteClientAsync(id: Guid): Promise<ClientInfo[]> {
+        this.clients = this.clients.filter(client => client.id !== id);
+        return Promise.resolve(this.clients);
     }
 
     editClientAsync(id: Guid, client: Client): Promise<ClientInfo> {
