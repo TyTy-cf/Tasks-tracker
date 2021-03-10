@@ -4,30 +4,19 @@
     flex-direction: row;
 }
 
-#side-menu {
+.side-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    @media (min-width: 992px) {
+        width: 300px;
+        min-height: 100vh;
+    }
+
     .collapse-wrapper.collapse {
         width: 100%;
         height: 100%;
-    }
-
-    .menu-toggler {
-        background-color: transparent;
-        border: 0;
-        color: white;
-        font-size: 2rem;
-        &:focus {
-            outline: none;
-        }
-    }
-
-    img {
-        max-width: 125px;
-        object-position: center;
-        object-fit: contain;
     }
 
     .menu {
@@ -46,3 +35,4 @@
         }
     }
 }
+
