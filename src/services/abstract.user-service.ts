@@ -7,9 +7,9 @@ export interface UserInfo {
 }
 
 export abstract class AbstractUserService {
-    abstract createUserAsync(id: Guid, user: User): Promise<UserInfo>;
-    abstract deleteUserAsync(id: Guid): Promise<void>;
+    abstract addUserAsync(id: Guid, user: User): Promise<void>;
+    abstract deleteUserAsync(id: Guid): Promise<UserInfo[]>;
     abstract editUserAsync(id: Guid, user: User): Promise<UserInfo>;
-    abstract getUserAsync(id: Guid): Promise<User>;
+    abstract getUserAsync(id: Guid): Promise<UserInfo>;
     abstract getUsersList(): Promise<UserInfo[]>;
 }

@@ -1,6 +1,33 @@
 
 export class User {
-  password: string;
+
+  //#region property password
+  private _password: string;
+  public get password(): string {
+    return this._password;
+  }
+  public set password(value: string) {
+    // falsy : undefined, 0, null, NaN, "", false
+    if (!value) {
+      throw new Error('The password cannot be empty');
+    }
+    this._password = value;
+  }
+  //#endregion
+
+  //#region property lastName
+  private _lastName: string;
+  public get lastName(): string {
+    return this._lastName;
+  }
+  public set lastName(value: string) {
+    // falsy : undefined, 0, null, NaN, "", false
+    if (!value) {
+      throw new Error('The lastname cannot be empty');
+    }
+    this._lastName = value;
+  }
+  //#endregion
 
   //#region property firstName
   private _firstName: string;
@@ -13,20 +40,6 @@ export class User {
       throw new Error('The firstname cannot be empty');
     }
     this._firstName = value;
-  }
-  //#endregion
-
-  //#region property firstName
-  private _lastName: string;
-  public get lastName(): string {
-    return this._lastName;
-  }
-  public set lastName(value: string) {
-    // falsy : undefined, 0, null, NaN, "", false
-    if (!value) {
-      throw new Error('The lastname cannot be empty');
-    }
-    this._lastName = value;
   }
   //#endregion
 
@@ -47,12 +60,21 @@ export class User {
   }
   //#endregion
 
-  constructor(firstName: string, lastName: string, email: string, password: string) {
-    this._firstName = firstName;
-    this._lastName = lastName;
-    this._email = email;
-    this.password = password;
+  //#region property phone
+  private _phone: string;
+  public get phone(): string {
+    return this._phone;
   }
+  public set phone(value: string) {
+    // falsy : undefined, 0, null, NaN, "", false
+    if (!value) {
+      throw new Error('The phone cannot be empty');
+    }
+    this._phone = value;
+  }
+  //#endregion
+
+  constructor() { }
 
 }
 

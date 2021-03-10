@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {faEye, faCheck, faCopy, faTrash, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faCopy, faTrash, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {TaskService} from '../../services/task.service';
 import {TaskInfo} from '../../services/abstract.task-service';
 import {Guid} from 'guid-typescript';
@@ -26,7 +26,6 @@ export class TasksComponent implements OnInit {
 
   /** Icons */
   public faCheck = faCheck;
-  public faEye = faEye;
   public faCopy = faCopy;
   public faTrash = faTrash;
   public faPlusCircle = faPlusCircle;
