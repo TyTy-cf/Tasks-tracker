@@ -1,0 +1,26 @@
+
+<form (ngSubmit)="onSubmit()" #clientForm="ngForm">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>
+                    <input [(ngModel)]="client.lastName" type="text" class="form-control" placeholder="Nom" name="lastName" required>
+                </th>
+                <th>
+                    <input [(ngModel)]="client.firstName" type="text" class="form-control" placeholder="Prénom" name="firstName" required>
+                </th>
+                <th>
+                    <input [(ngModel)]="client.phone" type="text" class="form-control" placeholder="Téléphone" name="phone" required>
+                </th>
+                <th>
+                    <input [(ngModel)]="client.email" type="text" class="form-control" placeholder="Email" name="email" required>
+                </th>
+                <th>
+                    <button (click)="addClient(); clientForm.reset()" title="Créer client" class="btn btn-hover">
+                        <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
+                    </button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</form>

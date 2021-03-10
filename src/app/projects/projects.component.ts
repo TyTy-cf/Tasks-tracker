@@ -37,16 +37,21 @@ export class ProjectsComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.projects = await this.projectService.getProjectsList();
-    this.clients = await this.clientService.getClientsList();
-    this.servers = await this.serverService.getServersList();
+    await this.projectService.getProjectsList().then((projects) => {
+      this.projects = projects;
+    });
+    await this.clientService.getClientsList().then((clients) => {
+      this.clients = clients;
+    });
+    await this.serverService.getServersList().then((servers) => {
+      this.servers = servers;
+    });
   }
 
   async addProject(): Promise<void> {
     await this.serverService.getServerAsync(this.selectedServerGuid).then((s) => {
       this.project.server = s.server;
     });
-    alert(this.selectedClientGuid);
     await this.clientService.getClientAsync(this.selectedClientGuid).then((c) => {
       this.project.client = c.client;
       this.projectService.addProject(Guid.create(), this.project);
@@ -58,6 +63,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   async deleteTask(id: Guid): Promise<void> {
-    await this.projectService.deleteProjectAsync(id);
+    await this.projectService.deleteProjectAsync(id).then((projects) => {
+      this.projects = projects;
+    });
   }
 }

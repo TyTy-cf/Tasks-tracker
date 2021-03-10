@@ -1,0 +1,20 @@
+
+<form (ngSubmit)="onSubmit()" #serverForm="ngForm">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>
+                    <input [(ngModel)]="server.name" type="text" class="form-control" name="name" placeholder="Nom" required>
+                </th>
+                <th>
+                    <input [(ngModel)]="server.url" type="text" class="form-control" name="url" placeholder="URL" required>
+                </th>
+                <th>
+                    <button (click)="addServer(); serverForm.reset()" title="Créer serveur" class="btn btn-hover">
+                        <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
+                    </button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</form>

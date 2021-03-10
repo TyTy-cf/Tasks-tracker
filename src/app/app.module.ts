@@ -24,6 +24,8 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ServersComponent } from './servers/servers.component';
 import { ClientsComponent } from './clients/clients.component';
 import { UsersComponent } from './users/users.component';
+import { FormClientsComponent } from './form-clients/form-clients.component';
+import { FormServerComponent } from './form-server/form-server.component';
 
 const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
@@ -49,6 +51,8 @@ const routes: Routes = [
     ServersComponent,
     ClientsComponent,
     UsersComponent,
+    FormClientsComponent,
+    FormServerComponent,
   ],
   imports: [
     BrowserModule,

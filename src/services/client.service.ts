@@ -13,13 +13,13 @@ export class ClientService implements AbstractClientService {
 
     constructor() {
         const client = new Client();
-        client.lastName = 'Barsalon';
         client.firstName = 'Clément';
+        client.lastName = 'Barsalon';
         client.phone = '0615595753';
         client.email = 'barsalon.clement@cdn.fr';
         const client1 = new Client();
-        client1.lastName = 'Maxime';
-        client1.firstName = 'BONNOT';
+        client1.firstName = 'Maxime';
+        client1.lastName = 'BONNOT';
         client1.phone = '0612568754';
         client1.email = 'maxime.bonnot@1m2p.fr';
         this.clients.push({id: Guid.create(), client});

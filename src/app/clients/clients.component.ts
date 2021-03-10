@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ClientService} from '../../services/client.service';
-import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {ClientInfo} from '../../services/abstract.client-service';
-import {Client} from '../../models/client';
+import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {Guid} from 'guid-typescript';
 
 @Component({
@@ -12,31 +11,19 @@ import {Guid} from 'guid-typescript';
 export class ClientsComponent implements OnInit {
 
   clients: ClientInfo[];
-  private submitted = false;
 
-  @Input()
-  client: Client;
+  public faTrash = faTrash;
 
-  public faPlusCircle = faPlusCircle;
-
-  constructor(private clientService: ClientService) {
-    this.client = new Client();
-  }
+  constructor(private clientService: ClientService) { }
 
   async ngOnInit(): Promise<void> {
     this.clients = await this.clientService.getClientsList();
   }
 
-  async addClient(): Promise<void> {
-    await this.clientService.addClient(Guid.create(), this.client);
-  }
-
-  onSubmit(): void {
-    this.submitted = true;
-  }
-
   async deleteClient(id: Guid): Promise<void> {
-    await this.clientService.deleteClientAsync(id);
+    await this.clientService.deleteClientAsync(id).then((clients) => {
+      this.clients = clients;
+    });
   }
 
 }

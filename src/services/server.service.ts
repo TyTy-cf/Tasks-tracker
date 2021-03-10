@@ -25,8 +25,9 @@ export class ServerService implements AbstractServersService {
     await this.servers.push({id, server});
   }
 
-  deleteServerAsync(id: Guid): Promise<void> {
-    return Promise.resolve(undefined);
+  deleteServerAsync(id: Guid): Promise<ServerInfo[]> {
+    this.servers = this.servers.filter(server => server.id !== id);
+    return Promise.resolve(this.servers);
   }
 
   editServerAsync(id: Guid, client: Server): Promise<ServerInfo> {
