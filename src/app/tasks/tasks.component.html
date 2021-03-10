@@ -1,85 +1,93 @@
 
-<h3>Mes tâches</h3>
+<div class="dashboard-layout">
 
-<form (ngSubmit)="onSubmit()" #taskForm="ngForm">
-  <table class="table table-striped title-blue">
-    <thead>
-      <tr>
-        <th>N°</th>
-        <th>Client</th>
-        <th>Projet</th>
-        <th>Nom</th>
-        <th>Date</th>
-        <th>Continue</th>
-        <th>Temps passé</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let taskInfos of tasks">
-        <td>
-          {{ taskInfos.task.taskNumber }}
-        </td>
-        <td *ngIf="taskInfos.task.project.client; else emptyTd">
-          {{ taskInfos.task.project.client.lastName|uppercase }} {{ taskInfos.task.project.client.firstName }}
-        </td>
-        <td>
-          {{ taskInfos.task.project.name }}
-        </td>
-        <td>
-          {{ taskInfos.task.title }}
-        </td>
-        <td>
-          {{ taskInfos.task.createAt|date: "dd/MM/yyyy HH:mm:ss" }}
-        </td>
-        <td *ngIf="taskInfos.task.continue; else emptyTd">
-          <fa-icon class="success" [icon]="faCheck"></fa-icon>
-        </td>
-        <td>
-          {{ taskInfos.task.duration }}h
-        </td>
-        <td>
-          <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn btn-drosalys-blue">
-            <fa-icon [icon]="faCopy"></fa-icon>
-          </button>
-  <!--        <button (click)="deleteTask(taskInfos.id)" title="Supprimer la tâche" class="btn btn-hover">-->
-  <!--          <fa-icon [icon]="faTrash"></fa-icon>-->
-  <!--        </button>-->
-        </td>
-      </tr>
-        <tr>
-          <th>
-            <!-- task number : auto generated -->
-          </th>
-          <th>
-            <!-- client : auto generated via project -->
-          </th>
-          <th>
-            <select [(ngModel)]="selectedProjectGuid" id="project" name="project" class="form-select">
-              <option *ngFor="let projectInfo of projects" [value]="projectInfo.id">{{ projectInfo.project.name }}</option>
-            </select>
-          </th>
-          <th>
-            <input [(ngModel)]="task.title" type="text" class="form-control" id="title" name="title" required>
-          </th>
-          <th>
-            <input [ngModel]="task.createAt|date:'yyyy-MM-dd'" type="date" class="form-control" id="createAt" name="createAt" required>
-          </th>
-          <th>
-            <input [(ngModel)]="task.continue" type="checkbox" class="form-check" id="continue" name="continue">
-          </th>
-          <th>
-            <input [(ngModel)]="task.duration" type="number" step=".5" class="form-control" id="duration" name="duration" required>
-          </th>
-          <th>
-            <button (click)="addTask(); taskForm.reset()" title="Créer tâche" class="btn btn-hover">
-              <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
-            </button>
-          </th>
-        </tr>
-    </tbody>
-  </table>
-</form>
+  <app-side-menu></app-side-menu>
+
+  <main class="container-fluid px-sm-2 px-md-5">
+
+      <h3>Mes tâches</h3>
+
+      <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+        <table class="table table-striped title-blue">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Client</th>
+              <th>Projet</th>
+              <th>Nom</th>
+              <th>Date</th>
+              <th>Continue</th>
+              <th>Temps passé</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let taskInfos of tasks">
+              <td>
+                {{ taskInfos.task.taskNumber }}
+              </td>
+              <td *ngIf="taskInfos.task.project.client; else emptyTd">
+                {{ taskInfos.task.project.client.lastName|uppercase }} {{ taskInfos.task.project.client.firstName }}
+              </td>
+              <td>
+                {{ taskInfos.task.project.name }}
+              </td>
+              <td>
+                {{ taskInfos.task.title }}
+              </td>
+              <td>
+                {{ taskInfos.task.createAt|date: "dd/MM/yyyy HH:mm:ss" }}
+              </td>
+              <td *ngIf="taskInfos.task.continue; else emptyTd">
+                <fa-icon class="success" [icon]="faCheck"></fa-icon>
+              </td>
+              <td>
+                {{ taskInfos.task.duration }}h
+              </td>
+              <td>
+                <button (click)="duplicateTask(taskInfos.id)" title="Dupliquer la tâche" class="btn btn-drosalys-blue">
+                  <fa-icon [icon]="faCopy"></fa-icon>
+                </button>
+        <!--        <button (click)="deleteTask(taskInfos.id)" title="Supprimer la tâche" class="btn btn-hover">-->
+        <!--          <fa-icon [icon]="faTrash"></fa-icon>-->
+        <!--        </button>-->
+              </td>
+            </tr>
+              <tr>
+                <th>
+                  <!-- task number : auto generated -->
+                </th>
+                <th>
+                  <!-- client : auto generated via project -->
+                </th>
+                <th>
+                  <select [(ngModel)]="selectedProjectGuid" id="project" name="project" class="form-select">
+                    <option *ngFor="let projectInfo of projects" [value]="projectInfo.id">{{ projectInfo.project.name }}</option>
+                  </select>
+                </th>
+                <th>
+                  <input [(ngModel)]="task.title" type="text" class="form-control" id="title" name="title" required>
+                </th>
+                <th>
+                  <input [ngModel]="task.createAt|date:'yyyy-MM-dd'" type="date" class="form-control" id="createAt" name="createAt" required>
+                </th>
+                <th>
+                  <input [(ngModel)]="task.continue" type="checkbox" class="form-check" id="continue" name="continue">
+                </th>
+                <th>
+                  <input [(ngModel)]="task.duration" type="number" step=".5" class="form-control" id="duration" name="duration" required>
+                </th>
+                <th>
+                  <button (click)="addTask(); taskForm.reset()" title="Créer tâche" class="btn btn-hover">
+                    <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
+                  </button>
+                </th>
+              </tr>
+          </tbody>
+        </table>
+      </form>
+  </main>
+</div>
 
 <ng-template #emptyTd>
   <td>

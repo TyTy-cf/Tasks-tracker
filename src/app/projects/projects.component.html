@@ -1,53 +1,61 @@
 
-<h3>Mes projets</h3>
+<div class="dashboard-layout">
 
-<form (ngSubmit)="onSubmit()" #projectForm="ngForm">
-    <table class="table table-striped title-blue">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Serveur</th>
-            <th>Client</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let projectInfo of projects">
-            <td>
-                {{ projectInfo.project.name }}
-            </td>
-            <td>
-                {{ projectInfo.project.server.name }}
-            </td>
-            <td *ngIf="projectInfo.project.client; else emptyTd">
-                {{ projectInfo.project.client.lastName|uppercase }} {{ projectInfo.project.client.firstName }}
-            </td>
-            <td>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <input [(ngModel)]="project.name" type="text" class="form-control" id="name" name="name" required>
-            </th>
-            <th>
-                <select [(ngModel)]="selectedServerGuid" id="server" name="server" class="form-select">
-                    <option *ngFor="let serverInfo of servers" [value]="serverInfo.id">{{ serverInfo.server.name }}</option>
-                </select>
-            </th>
-            <th>
-                <select [(ngModel)]="selectedClientGuid" id="client" name="client" class="form-select">
-                    <option *ngFor="let clientInfo of clients" [value]="clientInfo.id">{{ clientInfo.client.lastName }} {{ clientInfo.client.firstName }}</option>
-                </select>
-            </th>
-            <th>
-                <button (click)="addProject(); projectForm.reset()" title="Ajouter projet" class="btn btn-hover">
-                    <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
-                </button>
-            </th>
-        </tr>
-        </tbody>
-    </table>
-</form>
+    <app-side-menu></app-side-menu>
+
+    <main class="container-fluid px-sm-2 px-md-5">
+
+        <h3>Mes projets</h3>
+
+        <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+            <table class="table table-striped title-blue">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Serveur</th>
+                        <th>Client</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let projectInfo of projects">
+                        <td>
+                            {{ projectInfo.project.name }}
+                        </td>
+                        <td>
+                            {{ projectInfo.project.server.name }}
+                        </td>
+                        <td *ngIf="projectInfo.project.client; else emptyTd">
+                            {{ projectInfo.project.client.lastName|uppercase }} {{ projectInfo.project.client.firstName }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input [(ngModel)]="project.name" type="text" class="form-control" id="name" name="name" required>
+                        </th>
+                        <th>
+                            <select [(ngModel)]="selectedServerGuid" id="server" name="server" class="form-select">
+                                <option *ngFor="let serverInfo of servers" [value]="serverInfo.id">{{ serverInfo.server.name }}</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select [(ngModel)]="selectedClientGuid" id="client" name="client" class="form-select">
+                                <option *ngFor="let clientInfo of clients" [value]="clientInfo.id">{{ clientInfo.client.lastName }} {{ clientInfo.client.firstName }}</option>
+                            </select>
+                        </th>
+                        <th>
+                            <button (click)="addProject(); projectForm.reset()" title="Ajouter projet" class="btn btn-hover">
+                                <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
+                            </button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </main>
+</div>
 
 <ng-template #emptyTd>
     <td>

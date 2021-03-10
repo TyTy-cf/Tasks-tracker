@@ -1,40 +1,49 @@
 
-<h3>Mes serveurs</h3>
+<div class="dashboard-layout">
 
-<form (ngSubmit)="onSubmit()" #serverForm="ngForm">
-    <table class="table table-striped title-blue">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>URL</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let serverInfo of servers">
-                <td>
-                    {{ serverInfo.server.name }}
-                </td>
-                <td>
-                    {{ serverInfo.server.url }}
-                </td>
-                <td>
+    <app-side-menu></app-side-menu>
 
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    <input [(ngModel)]="server.name" type="text" class="form-control" id="name" name="name" required>
-                </th>
-                <th>
-                    <input [(ngModel)]="server.url" type="text" class="form-control" id="url" name="url" required>
-                </th>
-                <th>
-                    <button (click)="addServer(); serverForm.reset()" title="Créer serveur" class="btn btn-hover">
-                        <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
-                    </button>
-                </th>
-            </tr>
-        </tbody>
-    </table>
-</form>
+    <main class="container-fluid px-sm-2 px-md-5">
+
+        <h3>Mes serveurs</h3>
+
+        <form (ngSubmit)="onSubmit()" #serverForm="ngForm">
+            <table class="table table-striped title-blue">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>URL</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let serverInfo of servers">
+                        <td>
+                            {{ serverInfo.server.name }}
+                        </td>
+                        <td>
+                            {{ serverInfo.server.url }}
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input [(ngModel)]="server.name" type="text" class="form-control" id="name" name="name" required>
+                        </th>
+                        <th>
+                            <input [(ngModel)]="server.url" type="text" class="form-control" id="url" name="url" required>
+                        </th>
+                        <th>
+                            <button (click)="addServer(); serverForm.reset()" title="Créer serveur" class="btn btn-hover">
+                                <fa-icon class="btn-drosalys-blue" [icon]="faPlusCircle"></fa-icon>
+                            </button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </main>
+
+</div>
